@@ -51,8 +51,8 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
         document.getElementById('bookingOptions').innerHTML = options;
-        // var bookingModal = new bootstrap.Modal(document.getElementById('bookingModal'));
-        modal.show();
+        var bookingModal = new bootstrap.Modal(document.getElementById('bookingModal'));
+        bookingModal.show();
     }
 
     function handleDateSelect(info) {
@@ -65,8 +65,8 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
         document.getElementById('bookingOptions').innerHTML = options;
-        // var bookingModal = new bootstrap.Modal(document.getElementById('bookingModal'));
-        modal.show();
+        var bookingModal = new bootstrap.Modal(document.getElementById('bookingModal'));
+        bookingModal.show();
     }
 
     window.bookWholeDay = function(dateStr) {
@@ -124,6 +124,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function hideModal() {
-        modal.hide();
+        var bookingModal = bootstrap.Modal.getInstance(document.getElementById('bookingModal'));
+        bookingModal.hide();
+        // Remove the backdrop and reset the focus state
+        document.body.classList.remove('modal-open');
+        document.querySelector('.modal-backdrop').remove();        
     }
 });
